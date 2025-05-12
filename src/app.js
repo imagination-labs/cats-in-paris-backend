@@ -64,4 +64,6 @@ app.use(errorConverter);
 // handle error
 app.use(errorHandler);
 
+app.use(express.static('public'));
+
 module.exports = app;

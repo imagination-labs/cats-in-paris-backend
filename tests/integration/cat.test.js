@@ -6,15 +6,15 @@ const setupTestDB = require('../utils/setupTestDB');
 setupTestDB();
 
 describe('Cat routes', () => {
-  describe('GET /api/cat', () => {
+  describe('GET /api/v1/cat', () => {
     test('should return 201 and a cat object', async () => {
       const res = await request(app)
-        .get('/api/cat')
-        .expect(httpStatus.CREATED);
+        .get('/api/v1/cat')
+        .expect(httpStatus.OK);
 
       expect(res.body).toMatchObject({
-        imageUrl: expect.any(String),
-        expertDescription: expect.any(String),
+        image: expect.any(String),
+        caption: expect.any(String),
       });
     });
   });
@@ -22,13 +22,13 @@ describe('Cat routes', () => {
   describe('Error handling', () => {
     test('should return 404 for non-existent routes', async () => {
       await request(app)
-        .get('/api/cat/invalid')
+        .get('/api/v1/cat/invalid')
         .expect(httpStatus.NOT_FOUND);
     });
 
     test('should return 404 for invalid HTTP methods', async () => {
       await request(app)
-        .post('/api/cat')
+        .post('/api/v1/cat')
         .expect(httpStatus.NOT_FOUND);
     });
   });

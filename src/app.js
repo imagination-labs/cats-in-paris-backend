@@ -9,7 +9,6 @@ const httpStatus = require('http-status');
 const config = require('./config/config');
 const morgan = require('./config/morgan');
 const { jwtStrategy } = require('./config/passport');
-const { authLimiter } = require('./middlewares/rateLimiter');
 const routes = require('./routes/v1');
 const { errorConverter, errorHandler } = require('./middlewares/error');
 const ApiError = require('./utils/ApiError');
@@ -45,6 +44,8 @@ app.options('*', cors());
 app.use(passport.initialize());
 passport.use('jwt', jwtStrategy);
 
+app.use('/static', express.static('src/public'));
+
 // api routes
 app.use('/api/v1', routes);
 
@@ -58,7 +59,5 @@ app.use(errorConverter);
 
 // handle error
 app.use(errorHandler);
-
-app.use(express.static('public'));
 
 module.exports = app;

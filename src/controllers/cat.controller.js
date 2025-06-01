@@ -1,6 +1,9 @@
 const httpStatus = require('http-status');
 const catchAsync = require('../utils/catchAsync');
 
+// @desc Retrieve a new cat image and description
+// @route GET /api/v1/cat
+// @access Public
 const showCat = catchAsync(async (req, res) => {
   const cat = {
     imageUrl: '/public/cat.jpg',

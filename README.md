@@ -21,6 +21,11 @@ Response:
 
 ## Quick Start
 
+Prerequisites:
+- Node.js (v22.16.0)
+- Yarn
+- MongoDB (Installation link: https://www.mongodb.com/docs/manual/installation/)
+
 To create a project, simply run:
 
 ```bash
@@ -34,3 +39,11 @@ cp .env.example .env
 
 # open .env and modify the environment variables (if needed)
 ```
+
+Run the app:
+
+```bash
+yarn dev
+```
+
+The app will be available at http://localhost:3000 unless you have modified the port in the .env file.
